@@ -4,7 +4,7 @@ import './App.css';
 import Header from "./Header";
 import ContactList from "./ContactList";
 import AddContact from "./AddContact";
-import Button from "./Button";
+import { logDOM } from "@testing-library/react";
 
 function App() {
     const LOCAL_STORAGE_KEY = "contacts";
@@ -22,12 +22,13 @@ function App() {
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
     }, [contacts]);
 
+    useEffect(() => console.log(contacts));
+
     return (
         <div className="ui container">
             <Header />
             <AddContact addContactHandler={addContactHandler} />
             <ContactList contacts={contacts} />
-            <Button />
         </div>
     );
 }
